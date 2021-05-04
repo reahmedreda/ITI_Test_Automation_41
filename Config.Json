@@ -1,0 +1,11 @@
+{
+  "Name" : "Ahmed",
+
+  "MailContact": {
+    "Email": ["armostafa","reahmed"],
+    "Password":{
+      "Pass1" : ["Amed","Reda"]
+    }
+  }
+
+}
