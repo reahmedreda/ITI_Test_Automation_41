@@ -1,4 +1,5 @@
 package POM;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import static org.testng.Assert.*;
@@ -31,36 +32,42 @@ public class Home {
     }
 
 
-
-
-
-
-
-
-    public void pressCreateDocument(){
-
+    public void pressCreateDocument0(){
         By element = new By.ByXPath(createDocument);
-        if(validateOnElement2(element,ExpectedConditions.elementToBeClickable(element))) {
-            driver.findElement(element).click();
+
+        new WebDriverWait(driver, 10).
+                until(ExpectedConditions.elementToBeClickable
+                        (element));
+
+           driver.findElement(element).click();
 
             By expectedElementLocator = new By.ByCssSelector(new SelectingDocument(driver).documentSearchSelector);
-            assertTrue(validateOnElement2(expectedElementLocator,ExpectedConditions.presenceOfElementLocated(expectedElementLocator)));
+        try {
+            new WebDriverWait(driver, 10).
+                    until(ExpectedConditions.presenceOfElementLocated
+                            (expectedElementLocator));
         }
+        catch (Exception e){
+            Assert.fail("Element not found");
+        }
+
     }
 
-    public void pressCreateDocument2(){
-       By element = new By.ByXPath(createDocument),
-            expectedElement = new By.ByCssSelector(new SelectingDocument(driver).documentSearchSelector);
-        clickOnBtn(element,expectedElement);
-    }
 
-    public void clickOnBtn(By element,By expectedElement){
-        if(validateOnElement(element,"clickable")) {
-            driver.findElement(element).click();
+
+
+
+    //==================================================================
+    public boolean validateOnBtn(By element){
+        try {
+            new WebDriverWait(driver, 10).
+                    until(ExpectedConditions.elementToBeClickable
+                            (element));
+            return true;
         }
-        validateOnElement(expectedElement,"presence");
-
-
+        catch(Exception e){
+            return  false;
+        }
     }
 
     public boolean validatePresenceOfElement(By element) {
@@ -75,24 +82,26 @@ public class Home {
         }
     }
 
-    public boolean validateOnBtn(By element){
-        try {
-            new WebDriverWait(driver, 10).
-                    until(ExpectedConditions.elementToBeClickable
-                            (element));
-            return true;
+
+    public void pressCreateDocument1(){
+
+        By element = new By.ByXPath(createDocument);
+
+        if(validatePresenceOfElement(element)) {
+            driver.findElement(element).click();
+            By expectedElementLocator = new By.ByCssSelector(new SelectingDocument(driver).documentSearchSelector);
+            assertTrue(validatePresenceOfElement(expectedElementLocator));
         }
-        catch(Exception e){
-            return  false;
-            }
     }
 
+
+    //==================================================================
     public boolean validateOnElement(By element, String s){
         ExpectedCondition<WebElement> x = null;
         switch (s){
             case "presence":
                 x = ExpectedConditions.presenceOfElementLocated(element);
-                
+
                 break;
             case "clickable":
                 x= ExpectedConditions.elementToBeClickable(element);
@@ -102,8 +111,8 @@ public class Home {
                 new WebDriverWait(driver, 10).
                         until(ExpectedConditions.visibilityOfElementLocated(element));
                 break;
-                
-                
+
+
         }
         try {
             if(x!=null) {
@@ -116,15 +125,74 @@ public class Home {
         }
     }
 
+    public void pressCreateDocument2(){
+
+        By element = new By.ByXPath(createDocument);
+
+        if(validateOnElement(element,"clickable")) {
+            driver.findElement(element).click();
+
+            By expectedElementLocator = new By.ByCssSelector(new SelectingDocument(driver).documentSearchSelector);
+            assertTrue(validateOnElement(expectedElementLocator,"presence"));
+        }
+    }
+
+
+    //==================================================================
+
     public boolean validateOnElement2(By element, ExpectedCondition<WebElement> s){
-            try{
-                new WebDriverWait(driver, 10).until(s);
-                return true;
+        try{
+            new WebDriverWait(driver, 10).until(s);
+            return true;
         }
         catch(Exception e){
             return  false;
         }
     }
+
+    public void pressCreateDocument3(){
+
+        By element = new By.ByXPath(createDocument);
+
+        if(validateOnElement2(element,ExpectedConditions.elementToBeClickable(element))) {
+            driver.findElement(element).click();
+
+            By expectedElementLocator = new By.ByCssSelector(new SelectingDocument(driver).documentSearchSelector);
+            assertTrue(validateOnElement2(expectedElementLocator,ExpectedConditions.presenceOfElementLocated(expectedElementLocator)));
+        }
+    }
+
+
+    //==================================================================
+    public void clickOnBtn(By element,By expectedElement){
+        if(validateOnElement2(element,ExpectedConditions.elementToBeClickable(element))) {
+            driver.findElement(element).click();
+        }
+        validateOnElement2(expectedElement,ExpectedConditions.presenceOfElementLocated(expectedElement));
+
+
+    }
+
+
+    public void pressCreateDocument4(){
+       By element = new By.ByXPath(createDocument),
+            expectedElement = new By.ByCssSelector(new SelectingDocument(driver).documentSearchSelector);
+        clickOnBtn(element,expectedElement);
+    }
+
+
+
+    //==================================================================
+
+
+
+
+
+
+
+
+
+
 
     public void pressRequestADocument(){
        validateOnBtn(new By.ByXPath(createDocument));

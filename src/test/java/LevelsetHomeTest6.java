@@ -58,7 +58,7 @@ public class LevelsetHomeTest6 {
                         .getValueOfNode("MailContact/Password/Pass1").toString(),"Ahmed");
     }
 
-    //@Test(retryAnalyzer =  Wrappers.RetryAnalyzer.class)
+    @Test(retryAnalyzer =  Wrappers.RetryAnalyzer.class)
     void retryFailed(){
         x++;
         Assert.assertEquals(x,3);

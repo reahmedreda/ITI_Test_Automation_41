@@ -36,29 +36,6 @@ public class WebUIActions {
         }
     }
     
-    public void clickOnBtn(By element, By expected){
-        //cick
-
-
-            if(expected !=null){
-                waitUntil(expected,"precense");
-            }
-
-
-        clickOnBtn(new By.ByXPath(""),new By.ByXPath(""));
-
-        clickOnBtn(new By.ByXPath(""),null);
-    }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -100,7 +77,7 @@ public class WebUIActions {
             if(assertion==true){
                 element= waitUntil(b, "elementToBeClickable");}
             else{
-                element = waitUntil(b, "visible");
+                element = waitUntil(b, "presenceOfElement");
             }
             element.click();
             

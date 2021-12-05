@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 public class SelectingDocument {
     WebDriver driver ;
-    String documentSearchSelector = "#document_search",
+    public String documentSearchSelector = "#document_search",
             documentSelector = "//div[text()='%s']",
             titleSelector="//div[@class='title']",
             priceFreeSelector = "//div[text()='%s']/..//span[text()='Free']";

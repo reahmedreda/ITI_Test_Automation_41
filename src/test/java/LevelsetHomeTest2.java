@@ -30,23 +30,5 @@ public class LevelsetHomeTest2 {
     }
 
 
-    @Test(dataProvider = "GetDocuments")
-    void testDocumentFreePrice(String doc) {
-        home.navigateToHome();
-        home.pressCreateDocument();
-        selectDoc.selectDocument(doc);
-        assertEquals(selectDoc.checkIfPriceIsFree(doc), true);
 
-    }
-
-    @DataProvider(name = "GetDocuments")
-    public Object[] getDocuments() {
-        return new Object[]
-                {
-                        "20-Day Preliminary Notice",
-                        "Notice of Intent to Lien",
-                        "Lien / Bond Claim",
-                        "Lien Waiver"
-                };
-    }
 }

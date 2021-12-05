@@ -43,7 +43,7 @@ public class LevelsetHomeTest {
     void testPreliminary() {
         String doc = "20-Day Preliminary Notice";
         home.navigateToHome();
-        home.pressCreateDocument();
+        home.pressCreateDocument0();
         selectDoc.selectDocument(doc);
         assertEquals(selectDoc.checkIfPriceIsFree(doc),true);
 

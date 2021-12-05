@@ -1,11 +1,11 @@
 import Actions.BrowserActions3;
 import POM.Home2;
-import io.github.bonigarcia.wdm.FirefoxDriverManager;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
+
+import static org.testng.Assert.assertEquals;
 
 
 public class LevelsetHomeTest5 {
@@ -37,6 +37,24 @@ public class LevelsetHomeTest5 {
         home.navigateToHome();
 
 
+    }
+
+    @Test(dataProvider = "GetDocuments")
+    void testDocumentFreePrice(String doc) {
+        home.navigateToHome();
+        home.pressCreateDocument();
+
+    }
+
+    @DataProvider(name = "GetDocuments")
+    public Object[] getDocuments() {
+        return new Object[]
+                {
+                        "20-Day Preliminary Notice",
+                        "Notice of Intent to Lien",
+                        "Lien / Bond Claim",
+                        "Lien Waiver"
+                };
     }
 
 }
