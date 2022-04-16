@@ -45,7 +45,7 @@ public class LevelsetHomeTest0 {
     void testExchangeAWaiver() {
         driver.get(homepageURL);
         By element = new By.ByXPath(getPaid);
-        new WebDriverWait(driver, 10).
+        new WebDriverWait(driver, 20).
                 until(ExpectedConditions.elementToBeClickable
                         (element));
 
@@ -53,7 +53,7 @@ public class LevelsetHomeTest0 {
 
         By expectedElementLocator = new By.ByXPath(String.format(doc,"Exchange a Waiver"));
         try {
-            new WebDriverWait(driver, 10).
+            new WebDriverWait(driver, 20).
                     until(ExpectedConditions.presenceOfElementLocated
                             (expectedElementLocator));
         }
