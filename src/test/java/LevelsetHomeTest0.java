@@ -3,6 +3,7 @@ import POM.SelectingDocument;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,8 +18,9 @@ import static org.testng.Assert.assertTrue;
 public class LevelsetHomeTest0 {
     String homepageURL = "https://www.levelset.com/";
     WebDriver driver;
-    String createDocument = "//a[text()='Create a Document ']",
-            labelPaymentHereSelector = "//h2[text()='Payment Help is Here']";
+    String doc = "//div[@class='left' and contains(text(),'%s')]",
+            getPaid = "//a[contains(text(),'Get paid')]",
+            priceSelector = "//div[@class='left' and contains(text(),'%s')]//..//span[@class='price-amount']";
 
     Home home;
     SelectingDocument selectDoc;
@@ -40,16 +42,16 @@ public class LevelsetHomeTest0 {
 
 
     @Test
-    void testPreliminary() {
+    void testExchangeAWaiver() {
         driver.get(homepageURL);
-        By element = new By.ByXPath(labelPaymentHereSelector);
+        By element = new By.ByXPath(getPaid);
         new WebDriverWait(driver, 10).
                 until(ExpectedConditions.elementToBeClickable
                         (element));
 
         driver.findElement(element).click();
 
-        By expectedElementLocator = new By.ByCssSelector(new SelectingDocument(driver).documentSearchSelector);
+        By expectedElementLocator = new By.ByXPath(String.format(doc,"Exchange a Waiver"));
         try {
             new WebDriverWait(driver, 10).
                     until(ExpectedConditions.presenceOfElementLocated
@@ -58,6 +60,13 @@ public class LevelsetHomeTest0 {
         catch (Exception e){
             Assert.fail("Element not found");
         }
+
+        WebElement price = driver.findElement(new By.ByXPath(String.format(priceSelector,"Release a Lien")));
+        new WebDriverWait(driver, 10).
+                until(ExpectedConditions.visibilityOf
+                        (price));
+        Assert.assertEquals(price.getText(),"$149");
+
     }
 
 
