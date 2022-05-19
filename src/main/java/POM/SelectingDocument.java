@@ -9,10 +9,13 @@ import org.testng.Assert;
 
 public class SelectingDocument {
     WebDriver driver ;
+    String doc = "//div[@class='left' and contains(text(),'%s')]";
     public String documentSearchSelector = "#document_search",
             documentSelector = "//div[text()='%s']",
             titleSelector="//div[@class='title']",
-            priceFreeSelector = "//div[text()='%s']/..//span[text()='Free']";
+            priceFreeSelector = "//div[text()='%s']/..//span[text()='Free']",
+            priceSelector = "\n" +
+                    "//div[@class='left' and contains(text(),'%s')]//parent::Div//span[@class='price-amount']";
 
 
     public SelectingDocument(WebDriver driver){
@@ -45,6 +48,16 @@ public class SelectingDocument {
             return false;
         }
     }
+
+    public String getPrice(String doc){
+        WebElement price = driver.findElement(new By.ByXPath(String.format(priceSelector,doc)));
+        new WebDriverWait(driver, 20).
+                until(ExpectedConditions.visibilityOf
+                        (price));
+        return price.getText();
+    }
+
+
 
 
 

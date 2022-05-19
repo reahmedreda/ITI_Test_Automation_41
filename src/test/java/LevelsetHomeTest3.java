@@ -1,7 +1,6 @@
 import Actions.BrowserActions;
 import Actions.BrowserActions3;
 import POM.*;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
 import static org.testng.Assert.assertEquals;

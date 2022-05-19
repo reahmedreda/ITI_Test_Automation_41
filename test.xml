@@ -2,16 +2,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Regression" parallel="tests" thread-count="2" verbose="0">
     <parameter name="browser" value="Chrome" />
+    <parameter name="DB" value="production" />
     <test name="OnChrome">
         <parameter name="browser" value="Chrome" />
         <classes>
-            <class name="LevelsetHomeTest5"></class>
+            <class name="ParallelTest"></class>
         </classes>
     </test>
     <test name="OnFireFox">
         <parameter name="browser" value="FireFox" />
         <classes>
-            <class name="LevelsetHomeTest5"/>
+            <class name="ParallelTest"/>
         </classes>
     </test>
 </suite>

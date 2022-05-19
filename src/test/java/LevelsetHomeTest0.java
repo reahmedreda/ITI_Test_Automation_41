@@ -31,8 +31,7 @@ public class LevelsetHomeTest0 {
         driver=new ChromeDriver();
 
         driver.manage().window().maximize();
-        home = new Home(driver);
-        selectDoc = new SelectingDocument(driver);
+
     }
 
     @AfterTest
@@ -45,7 +44,7 @@ public class LevelsetHomeTest0 {
     void testExchangeAWaiver() {
         driver.get(homepageURL);
         By element = new By.ByXPath(getPaid);
-        new WebDriverWait(driver, 20).
+        new WebDriverWait(driver, 30).
                 until(ExpectedConditions.elementToBeClickable
                         (element));
 
@@ -58,7 +57,13 @@ public class LevelsetHomeTest0 {
                             (expectedElementLocator));
         }
         catch (Exception e){
-            Assert.fail("Element not found");
+            driver.findElement(element).click();
+            if(new WebDriverWait(driver, 20).
+                    until(ExpectedConditions.presenceOfElementLocated
+                            (expectedElementLocator))==null){
+
+                Assert.fail("Element not found");
+            }
         }
 
         WebElement price = driver.findElement(new By.ByXPath(String.format(priceSelector,"Release a Lien")));

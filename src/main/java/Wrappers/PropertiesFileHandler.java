@@ -34,7 +34,9 @@ public class PropertiesFileHandler {
 
     public static String getProperty(String key){
         try {
-            return ((propFile.getProperty(key).split(","))[0]);
+            return propFile.getProperty(key);
+            //if you have multiple values
+            //return ((propFile.getProperty(key).split(","))[0]);
 
         }
         catch (Exception e){

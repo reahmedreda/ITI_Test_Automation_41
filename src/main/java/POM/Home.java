@@ -1,6 +1,8 @@
 package POM;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import static org.testng.Assert.*;
 import org.openqa.selenium.WebDriver;
@@ -12,16 +14,127 @@ public class Home {
     String homepageURL = "https://www.levelset.com/";
     WebDriver driver;
     String createDocument = "//a[text()='Create a Document ']",
+            getPaid = "//a[contains(text(),'Get paid')]",
             labelPaymentHereSelector = "//h2[text()='Payment Help is Here']";
 
-    public Home(WebDriver driver){
+    public Home(WebDriver driver) {
         this.driver = driver;
     }
 
+    public void navigateHome() {
+
+        driver.get(homepageURL);
+        WebElement expectedElement = driver.findElement(new By.ByXPath(getPaid));
+        new WebDriverWait(driver, 20).
+                until(ExpectedConditions.visibilityOf
+                        (expectedElement));
+    }
+
+    public void clickOnGetPaid() {
+
+            By element = new By.ByXPath(getPaid);
+            new WebDriverWait(driver, 20).
+                    until(ExpectedConditions.elementToBeClickable
+                            (element));
+            driver.findElement(element).click();
+            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
+            try {
+                new WebDriverWait(driver, 20).
+                        until(ExpectedConditions.presenceOfElementLocated
+                                (expectedElementLocator));
+            } catch (Exception e) {
+
+                Actions act = new Actions(driver);
+                act.doubleClick(driver.findElement(element)).perform();
+                if (new WebDriverWait(driver, 20).
+                        until(ExpectedConditions.presenceOfElementLocated
+                                (expectedElementLocator)) == null) {
+
+                    Assert.fail("Element not found");
+                }
+            }
+
+    }
+
+    public void clickOnGetPaid(boolean useSelenium) {
+        if (useSelenium) {
+            By element = new By.ByXPath(getPaid);
+            new WebDriverWait(driver, 20).
+                    until(ExpectedConditions.elementToBeClickable
+                            (element));
+            driver.findElement(element).click();
+            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
+            try {
+                new WebDriverWait(driver, 20).
+                        until(ExpectedConditions.presenceOfElementLocated
+                                (expectedElementLocator));
+            } catch (Exception e) {
+
+                Actions act = new Actions(driver);
+                act.doubleClick(driver.findElement(element)).perform();
+                if (new WebDriverWait(driver, 20).
+                        until(ExpectedConditions.presenceOfElementLocated
+                                (expectedElementLocator)) == null) {
+
+                    Assert.fail("Element not found");
+                }
+            }
+        } else {
+
+        }
+
+
+    }
+
+    public void clickOnGetPaid2() {
+        By element = new By.ByXPath(getPaid);
+        new WebDriverWait(driver, 20).
+                until(ExpectedConditions.elementToBeClickable
+                        (element));
+        driver.findElement(element).click();
+        By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
+        try {
+            new WebDriverWait(driver, 20).
+                    until(ExpectedConditions.presenceOfElementLocated
+                            (expectedElementLocator));
+        } catch (Exception e) {
+            Assert.fail("Element not found");
+        }
+
+
+    }
+
+
+    public boolean clickOnElement(By element, By expectedElement) {
+        for (int i = 0; i < 3; i++) {
+            try {
+                new WebDriverWait(driver, 20).
+                        until(ExpectedConditions.elementToBeClickable
+                                (element));
+                driver.findElement(element).click();
+                if (new WebDriverWait(driver, 20).
+                        until(ExpectedConditions.presenceOfElementLocated
+                                (expectedElement)) != null) {
+                    return true;
+                }
+
+            } catch (Exception e) {
+
+                Assert.fail();
+            }
+        }
+        return true;
+    }
+
+
+
+
+
+
     public void navigateToHome(){
         driver.get(homepageURL);
-        By element = new By.ByXPath(labelPaymentHereSelector);
-        assertTrue(validateOnElement(element,"presence"));
+        By element = new By.ByXPath(getPaid);
+        assertTrue(validateOnElement(element,"clickable"));
         /*try {
             (new WebDriverWait(driver, 6))
                     .until(ExpectedConditions.presenceOfElementLocated(new By.ByXPath(labelPaymentHereSelector)));
@@ -116,7 +229,7 @@ public class Home {
         }
         try {
             if(x!=null) {
-                new WebDriverWait(driver, 10).until(x);
+                new WebDriverWait(driver, 20).until(x);
             }
             return true;
         }

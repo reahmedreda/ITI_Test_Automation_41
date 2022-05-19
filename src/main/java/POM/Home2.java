@@ -10,6 +10,9 @@ public class Home2 {
     String createDocument = "//a[text()='Create a Document ']",
             labelPaymentHereSelector = "//h2[text()='Payment Help is Here']";
 
+    public Home2 (WebUIActions actions){
+        this.uiActions = actions;
+    }
     public Home2(WebDriver driver){
         uiActions = new WebUIActions(driver);
     }

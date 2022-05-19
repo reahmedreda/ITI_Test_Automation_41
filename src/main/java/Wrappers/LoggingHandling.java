@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 public class LoggingHandling {
 
-        public static Logger logger = Logger.getLogger("Reham");
+        public static Logger logger = Logger.getLogger(LoggingHandling.class.getName());
         static FileHandler f1 = null;
         public static String logFileName;
         private static FileHandler fh=null,fh2 = null;
@@ -22,12 +22,7 @@ public class LoggingHandling {
 
 
     static {
-        try {
-            f1 = new FileHandler("Reham.log");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        createNewLog();
+            createNewLog();
         }
 
         public static void createNewLog() {
@@ -55,7 +50,31 @@ public class LoggingHandling {
             logger.severe("");
         }
 
-        public static void logError(Exception e) {
+    public static void createNewLog(String fileName) {
+        Handler[] handlers = globalLogger.getHandlers();
+        for (Handler handler : handlers) {
+            globalLogger.removeHandler(handler);
+        }
+        handlers = logger.getHandlers();
+        for (Handler handler : handlers) {
+            logger.removeHandler(handler);
+        }
+        try {
+            logFileName = "Logs/" + fileName+ ".log";
+            fh = new FileHandler(logFileName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        LoggingHandling.logger.addHandler(fh);
+        LoggingHandling.logger.setUseParentHandlers(false);
+        BriefLogFormatter.init();
+        logger.info("");
+        logger.warning("");
+        logger.severe("");
+    }
+
+    public static void logError(Exception e) {
            // logger.severe(e.getMessage());
           StringWriter sw = new StringWriter();
           e.printStackTrace(new PrintWriter(sw));

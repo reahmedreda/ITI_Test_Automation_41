@@ -4,7 +4,7 @@
     <test name="OnChrome">
         <parameter name="browser" value="Chrome" />
         <classes>
-            <class name="LevelsetHomeTest5"/></classes>
+            <class name="LevelsetHomeTest"/></classes>
     </test>
 
     <test name="OnFireFox">

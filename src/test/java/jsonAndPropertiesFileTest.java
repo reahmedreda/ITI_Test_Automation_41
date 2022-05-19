@@ -16,10 +16,7 @@ import org.testng.annotations.Test;
 import java.io.FileNotFoundException;
 
 
-public class LevelsetHomeTest6 {
-    WebDriver driver1, driver2;
-    Home2 home, home2;
-    int x = 0;
+public class jsonAndPropertiesFileTest {
 
 
     //@Test
@@ -58,12 +55,10 @@ public class LevelsetHomeTest6 {
                         .getValueOfNode("MailContact/Password/Pass1").toString(),"Ahmed");
     }
 
-    @Test(retryAnalyzer =  Wrappers.RetryAnalyzer.class)
-    void retryFailed(){
-        x++;
-        Assert.assertEquals(x,3);
-        // Assert.assertFalse(true);
-    }
+
+
+
+
 
 
 

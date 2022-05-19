@@ -2,6 +2,8 @@ import POM.Home;
 import POM.SelectingDocument;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -14,15 +16,15 @@ public class LevelsetHomeTest {
     WebDriver driver;
     Home home;
     SelectingDocument selectDoc;
-    String broswer = "Chrome";
+    String browser = "Chrome";
 
     @BeforeTest
     void setup() {
-        if(broswer == "Chrome") {
+        if(browser == "Chrome") {
             driver = new ChromeDriver();
         }
-        else if (broswer == "firefox"){
-
+        else if (browser == "firefox"){
+            driver = new FirefoxDriver();
         }
         else{
 
@@ -41,11 +43,13 @@ public class LevelsetHomeTest {
 
     @Test
     void testPreliminary() {
-        String doc = "20-Day Preliminary Notice";
         home.navigateToHome();
-        home.pressCreateDocument0();
-        selectDoc.selectDocument(doc);
-        assertEquals(selectDoc.checkIfPriceIsFree(doc),true);
+        home.clickOnGetPaid();
+        Assert.assertEquals(selectDoc.getPrice("Release"),"$149");
+
+        //selectDoc.selectDocument(doc);
+
+      //  assertEquals(selectDoc.checkIfPriceIsFree(doc),true);
 
     }
 
