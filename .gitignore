@@ -2,3 +2,6 @@
 target/
 */libraries
 .idea/
+.allure/*
+allure-report
+*.iml

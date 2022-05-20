@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 
-public class LevelsetHomeTest {
+public class Test_1_UsePOM {
 
     WebDriver driver;
     Home home;
@@ -19,7 +19,7 @@ public class LevelsetHomeTest {
     String browser = "Chrome";
 
     @BeforeTest
-    void setup() {
+    public void setup() {
         if(browser == "Chrome") {
             driver = new ChromeDriver();
         }
@@ -36,7 +36,7 @@ public class LevelsetHomeTest {
     }
 
     @AfterTest
-    void teardown() {
+    public void teardown() {
         driver.quit();
     }
 

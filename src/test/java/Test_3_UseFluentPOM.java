@@ -1,18 +1,16 @@
-import Actions.BrowserActions;
 import Actions.BrowserActions3;
 import POM.*;
 import org.testng.annotations.*;
 
-import static org.testng.Assert.assertEquals;
 
 
-public class LevelsetHomeTest3 {
+public class Test_3_UseFluentPOM {
     Home3 home;
 
     BrowserActions3 BrowserActions;
 
     @BeforeTest
-    void setup() {
+    public void setup() {
         BrowserActions = new BrowserActions3();
         BrowserActions.initializeTheWebDriver("Chrome");
         BrowserActions.maximizeScreen();
@@ -21,25 +19,15 @@ public class LevelsetHomeTest3 {
     }
 
     @AfterTest
-    void teardown() {
+    public void teardown() {
         BrowserActions.closeDriver();
     }
 
-    @Test
-    void test1() {
-        home.navigateToHome();
-        home.pressCreateDocument();
-
-    }
 
     @Test
     void testFluentPOM(){
-
             home.navigateToHome_FluentPOM()
-                    .pressCreateDocument_FluentPOM()
-                    .navigateToHome_FluentPOM()
-                    .pressCreateDocument_FluentPOM()
-                    .navigateToHome_FluentPOM();
+                    .clickOnGetPaid_FluentPOM();
 
         }
     }

@@ -1,15 +1,10 @@
-import Actions.BrowserActions3;
-import POM.Home2;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import static org.testng.Assert.assertEquals;
 
 
-public class LevelsetHomeTest5 {
+public class Test_6_UseDataProviders {
 
     @Test(dataProvider = "GetDocuments")
     void testDocumentName(String doc) {

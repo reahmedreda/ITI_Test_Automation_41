@@ -1,7 +1,12 @@
 {
   "Name" : "Ahmed",
-
+  "Names" : ["A","B"],
   "MailContact": {
+    "Name": "Ahmed",
+    "Names": {
+      "Name": "A",
+      "Age": "15"
+    },
     "Email": ["armostafa","reahmed"],
     "Password":{
       "Pass1" : ["Amed","Reda"]

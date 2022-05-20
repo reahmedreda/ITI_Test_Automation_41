@@ -1,5 +1,4 @@
 package POM;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -9,13 +8,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class Home {
     String homepageURL = "https://www.levelset.com/";
     WebDriver driver;
     String createDocument = "//a[text()='Create a Document ']",
-            getPaid = "//a[contains(text(),'Get paid')]",
-            labelPaymentHereSelector = "//h2[text()='Payment Help is Here']";
+            getPaid = "//a[contains(text(),'Get paid')]";
 
     public Home(WebDriver driver) {
         this.driver = driver;

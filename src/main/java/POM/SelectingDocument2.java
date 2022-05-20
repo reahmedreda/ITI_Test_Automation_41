@@ -12,6 +12,7 @@ import org.testng.Assert;
 public class SelectingDocument2 {
 
     WebUIActions uiActions;
+    String doc = "//div[@class='left' and contains(text(),'%s')]";
     String documentSearchSelector = "#document_search",
             documentSelector = "//div[text()='%s']",
             titleSelector="//div[@class='title']",

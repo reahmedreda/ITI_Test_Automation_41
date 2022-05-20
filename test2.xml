@@ -4,13 +4,15 @@
     <test name="OnChrome">
         <parameter name="browser" value="Chrome" />
         <classes>
-            <class name="LevelsetHomeTest"/></classes>
+            <class name="Test_9_1_TestBaseChild1"/></classes>
     </test>
 
     <test name="OnFireFox">
-        <parameter name="browser" value="FireFox" />
+        <parameter name="browser" value="FireFox"></parameter>
         <classes>
-            <class name="LevelsetHomeTest5"/>
+            <class name="Test_9_1_TestBaseChild2">
+            </class>
+
         </classes>
     </test>
 </suite>

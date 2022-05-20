@@ -12,16 +12,15 @@ import java.util.Map;
 import static org.testng.Assert.assertEquals;
 
 
-public class LevelsetHomeTest2 {
-    Map<String,WebDriver> drivermapper = new HashMap<>();
-    WebDriver driver,d2,d3,d4,d5;
+public class Test_2_UsePOM_And_BrowserActions {
+    WebDriver driver;
     Home2 home;
     SelectingDocument2 selectDoc;
     BrowserActions BrowserActions;
     WebUIActions actions;
-    @BeforeTest
-    void setup() {
 
+    @BeforeTest
+    public void setup() {
         BrowserActions = new BrowserActions();
         driver = BrowserActions.initializeTheWebDriver("Chrome");
         BrowserActions.maximizeScreen();
@@ -31,22 +30,17 @@ public class LevelsetHomeTest2 {
         selectDoc = new SelectingDocument2(driver);
     }
 
-//    @BeforeTest
-//    public void setup(){
-//
-//        drivermapper.put("Test1",new ChromeDriver());
-//    }
 
     @AfterTest
-    void teardown() {
+    public void teardown() {
         BrowserActions.closeDriver();
     }
 
 
     @Test
-    public void parallel(){
-      WebDriver driver = drivermapper.get("Test1");
-      driver.get("");
+    public void test1 (){
+
+        home.navigateToHome();
     }
 
 

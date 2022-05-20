@@ -8,7 +8,8 @@ public class Home2 {
     String homepageURL = "https://www.levelset.com/";
     WebUIActions uiActions;
     String createDocument = "//a[text()='Create a Document ']",
-            labelPaymentHereSelector = "//h2[text()='Payment Help is Here']";
+            labelPaymentHereSelector = "//h2[text()='Payment Help is Here']",
+            getPaid = "//a[contains(text(),'Get paid')]";
 
     public Home2 (WebUIActions actions){
         this.uiActions = actions;
@@ -18,7 +19,7 @@ public class Home2 {
     }
 
     public void navigateToHome(){
-         uiActions.navigateToPage(homepageURL, new By.ByXPath(labelPaymentHereSelector));
+         uiActions.navigateToPage(homepageURL, new By.ByXPath(getPaid));
     }
 
     public void pressCreateDocument(){

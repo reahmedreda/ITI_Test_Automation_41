@@ -15,19 +15,17 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 
-public class LevelsetHomeTest0 {
+public class Test_0_UseSeleniumDirectlyInTestClass {
     String homepageURL = "https://www.levelset.com/";
     WebDriver driver;
     String doc = "//div[@class='left' and contains(text(),'%s')]",
             getPaid = "//a[contains(text(),'Get paid')]",
             priceSelector = "//div[@class='left' and contains(text(),'%s')]//..//span[@class='price-amount']";
 
-    Home home;
-    SelectingDocument selectDoc;
-    String broswer = "Chrome";
+
 
     @BeforeTest
-    void setup() {
+    public void setup() {
         driver=new ChromeDriver();
 
         driver.manage().window().maximize();
@@ -35,7 +33,7 @@ public class LevelsetHomeTest0 {
     }
 
     @AfterTest
-    void teardown() {
+    public void teardown() {
         driver.quit();
     }
 

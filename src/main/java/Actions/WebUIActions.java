@@ -35,12 +35,6 @@ public class WebUIActions {
             Assert.fail("Couldn't set text because of " + e.getMessage());
         }
     }
-    
-
-
-
-
-
 
     public void clickOn(By b,boolean assertion) {
         waitUntil(b, "presenceOfElement");

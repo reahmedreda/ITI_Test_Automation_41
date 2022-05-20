@@ -11,12 +11,17 @@ import org.testng.Assert;
 
 import static org.testng.Assert.assertNotNull;
 
+
 public class WebUIActions4 {
 
-    WebDriver driver;
+    public WebDriver driver;
 
     public WebUIActions4(int i){
         this.driver=BrowserActions4.drivers.get(i);
+    }
+
+    public WebUIActions4(String key){
+        this.driver=BrowserActions4.mapper.get(key);
     }
 
     public void clickOn(String selector,Locators l,boolean assertion,String expectedElementSelector,Locators l2) {

@@ -3,11 +3,10 @@ package Wrappers;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import javax.management.ServiceNotFoundException;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,33 +22,43 @@ public class JsonFileParser {
         parseJson(file);
     }
 
-    public void parseJson(String file) {
+    public JSONObject parseJson(String file) {
 
-        String jsonData = readFile(file);
-        try {
-            jsonObject = new JSONObject(jsonData);
-        } catch (JSONException e) {
+        try{
+            InputStream is = new FileInputStream(file);
+            JSONTokener tokener = new JSONTokener(is);
+            jsonObject= new JSONObject(tokener);
+            return jsonObject;
+
+        } catch (JSONException | FileNotFoundException e) {
             LoggingHandling.logError(e);
+            return null;
         }
     }
 
-
-    public String getValueOfNode(String node,String s){
-
+    public String getValueOfNode(String node){
         return jsonObject.getString(node);
-
-
     }
 
-    public String getValueOfNode(String parent,String Child,String SecondChild){
-        JSONObject parentNode;
-        parentNode = (JSONObject) jsonObject.get(parent);
-        parentNode = (JSONObject) parentNode.get(Child);
-        return parentNode.getString(SecondChild);
+    public List<String> getValuesOfNode(String node){
+        JSONArray jsonArray = jsonObject.getJSONArray(node);
+        List<String> list = new ArrayList<>();
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            try {
+                list.add(jsonArray.getString(i));
+
+            } catch (JSONException e) {
+                LoggingHandling.logError(e);
 
 
+            }
+        }
+        return list;
     }
-    public String getValueOfNode(String parent){
+
+
+    public String getValueOfChildByFullPath(String parent){
 
         String [] tree= parent.split("/");
 
@@ -63,6 +72,60 @@ public class JsonFileParser {
 
         }
         return parentNode.getString(tree[i]);
+    }
+
+    public List<String> getValuesOfChildByFullPath(String parent){
+
+        String [] tree= parent.split("/");
+
+        int i=1;
+        JSONObject parentNode;
+        parentNode = jsonObject.getJSONObject(tree[0]);
+
+        while(i< tree.length-1){
+            parentNode =  parentNode.getJSONObject(tree[i]);
+            i++;
+
+        }
+        JSONArray value = null;
+        boolean isArray = false;
+        String singleVal = null;
+        Object ob = null;
+            try {
+                ob = parentNode.get(tree[i]);
+                if (ob instanceof JSONArray) {
+                    value = parentNode.getJSONArray(tree[i]);
+                    isArray = true;
+                }
+                else {
+                    singleVal=  parentNode.getString(tree[i]);
+                }
+            } catch (JSONException e) {
+                LoggingHandling.logError(e);
+
+            }
+
+        List<String> list = new ArrayList<String>();
+        if (isArray) {
+            for (int j = 0; j < value.length(); j++) {
+                try {
+                    list.add(value.getString(j));
+                } catch (JSONException e) {
+                    LoggingHandling.logError(e);
+                    return null;
+
+                }
+            }
+        }
+        else {
+            if(singleVal !=null)
+                list.add(singleVal);
+        }
+        return list;
+
+    }
+    public JSONObject getJsonObjectOfNode(String node){
+        return jsonObject.getJSONObject(node);
     }
 
     public List<String> getValuesOf(String parent, String child) {
@@ -123,21 +186,5 @@ public class JsonFileParser {
         return list;
     }
 
-    public static String readFile(String filename) {
-        String result = "";
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(filename));
-            StringBuilder sb = new StringBuilder();
-            String line = br.readLine();
-            while (line != null) {
-                sb.append(line);
-                line = br.readLine();
-            }
-            result = sb.toString();
-        } catch (Exception e) {
 
-            LoggingHandling.logError(e);
-        }
-        return result;
-    }
 }

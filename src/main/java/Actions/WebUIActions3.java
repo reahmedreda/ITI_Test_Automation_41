@@ -34,7 +34,7 @@ public class WebUIActions3 {
                 Assert.fail("Couldn't click because of" + c.getMessage());
             }
         }
-        new WebDriverWait(driver, 10).until(
+        new WebDriverWait(driver, 20).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
 
         By expectedElement = returnElementLocatorBy(expectedElementSelector,l2);
@@ -47,11 +47,11 @@ public class WebUIActions3 {
             switch (condition) {
                 case presenceOfElement:
 
-                    element = (new WebDriverWait(driver,6)).until(ExpectedConditions.presenceOfElementLocated(b));
+                    element = (new WebDriverWait(driver,15)).until(ExpectedConditions.presenceOfElementLocated(b));
                     return element;
 
                 case ElementToBeClickable:
-                    element = (new WebDriverWait(driver, 6)).until(ExpectedConditions.elementToBeClickable(b));
+                    element = (new WebDriverWait(driver, 15)).until(ExpectedConditions.elementToBeClickable(b));
                     return element;
 
 
