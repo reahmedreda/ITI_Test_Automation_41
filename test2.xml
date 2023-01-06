@@ -4,7 +4,15 @@
     <test name="OnChrome">
         <parameter name="browser" value="Chrome" />
         <classes>
-            <class name="Test_9_1_TestBaseChild1"/></classes>
+            <class name="Test_9_1_TestBaseChild1"/>
+        </classes>
+    </test>
+
+    <test name="retry">
+        <parameter name="browser" value="Chrome" />
+        <classes>
+            <class name="Test_7_RetryAnalyzer"/>
+        </classes>
     </test>
 
     <test name="OnFireFox">

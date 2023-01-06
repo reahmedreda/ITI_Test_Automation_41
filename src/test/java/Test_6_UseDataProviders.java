@@ -1,3 +1,4 @@
+import Wrappers.SendMail;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -39,4 +40,16 @@ public class Test_6_UseDataProviders {
                 };
     }
 
+    @DataProvider(name = "testData")
+    public Object[][] testData() {
+        Object [][] x = new Object[2][1];
+        x[0][0]= new SendMail();
+        x[1][0]= new SendMail();
+        return x;
+    }
+
+    @Test(dataProvider = "testData")
+    void fakeTest(SendMail s){
+        Assert.fail();
+    }
 }

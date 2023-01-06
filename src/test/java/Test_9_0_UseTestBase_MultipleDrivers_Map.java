@@ -10,15 +10,15 @@ public class Test_9_0_UseTestBase_MultipleDrivers_Map {
 
     @Parameters("browser")
     @BeforeClass
-    void setup(String browser,final ITestContext testContext) {
-        uniqueKey = testContext.getAllTestMethods()[0].getTestClass().getName();
+    void setup(String browser,ITestContext testContext) {
+        ITestContext x = testContext;
+        uniqueKey = testContext.getAllTestMethods()[0].getTestClass().getTestName();
         BrowserActions4.addWebDriverToMapOfDrivers(browser,uniqueKey);
     }
 
     @AfterClass
     public void tearDown(){
         BrowserActions4.closeDriverAndRemoveFromMap(uniqueKey);
-
     }
 
 }
