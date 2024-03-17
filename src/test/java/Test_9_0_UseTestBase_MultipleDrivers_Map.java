@@ -13,7 +13,7 @@ public class Test_9_0_UseTestBase_MultipleDrivers_Map {
     void setup(String browser,ITestContext testContext) {
         ITestContext x = testContext;
         uniqueKey = testContext.getAllTestMethods()[0].getTestClass().getTestName();
-        BrowserActions4.addWebDriverToMapOfDrivers(browser,uniqueKey);
+        BrowserActions4.addWebDriverToMapOfDrivers(BrowserActions4.Browsers.valueOf(browser),uniqueKey);
     }
 
     @AfterClass

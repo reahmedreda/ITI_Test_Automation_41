@@ -55,35 +55,6 @@ public class Home {
 
     }
 
-    public void clickOnGetPaid(boolean useSelenium) {
-        if (useSelenium) {
-            By element = new By.ByXPath(getPaid);
-            new WebDriverWait(driver, 20).
-                    until(ExpectedConditions.elementToBeClickable
-                            (element));
-            driver.findElement(element).click();
-            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
-            try {
-                new WebDriverWait(driver, 20).
-                        until(ExpectedConditions.presenceOfElementLocated
-                                (expectedElementLocator));
-            } catch (Exception e) {
-
-                Actions act = new Actions(driver);
-                act.doubleClick(driver.findElement(element)).perform();
-                if (new WebDriverWait(driver, 20).
-                        until(ExpectedConditions.presenceOfElementLocated
-                                (expectedElementLocator)) == null) {
-
-                    Assert.fail("Element not found");
-                }
-            }
-        } else {
-
-        }
-
-
-    }
 
     public void clickOnGetPaid2() {
         By element = new By.ByXPath(getPaid);

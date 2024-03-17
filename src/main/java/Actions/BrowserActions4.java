@@ -21,15 +21,17 @@ public class BrowserActions4 {
     public static ArrayList<WebDriver> drivers = new ArrayList<>();
     public static Map<String,WebDriver> mapper = new HashMap<>();
 
-    public static void addWebDriverToMapOfDrivers(String browser, String className) {
+    public static void addWebDriverToMapOfDrivers(Browsers browser, String className) {
         try{
-            if(browser.toLowerCase().equals(BrowserActions4.Browsers.chrome.toString())) {
+           switch (browser){
+               case chrome:
                 //adding a new driver to the map and link it with key = className
                 mapper.put(className,new ChromeDriver());
+                break;
 
-            }
-            else if(browser.toLowerCase().equals(BrowserActions4.Browsers.firefox.toString())) {
-                mapper.put(className,new FirefoxDriver());
+               case firefox:
+                   mapper.put(className,new FirefoxDriver());
+                   break;
             }
         }
 
@@ -78,7 +80,7 @@ public class BrowserActions4 {
     }
 
 
-    enum Browsers{
+    public enum Browsers{
         chrome,
         firefox
     }

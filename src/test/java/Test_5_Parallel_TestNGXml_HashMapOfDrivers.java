@@ -14,23 +14,26 @@ public class Test_5_Parallel_TestNGXml_HashMapOfDrivers {
 
     //This test should be run from test.xml
 
-    Home4 home;
-    String key = "";
-    @Parameters({"browser","uniqueKey"})
+
+
+    @Parameters({"browser"})
     @BeforeTest
-    void setup(String browser,String key) throws Exception {
-        this.key = key;
-        BrowserActions4.addWebDriverToMapOfDrivers(browser,key);
-        home =new Home4(key);
+    void setup(String browser) throws Exception {
+
+        BrowserActions4.addWebDriverToMapOfDrivers(BrowserActions4.Browsers.valueOf(browser.toLowerCase()),
+                String.valueOf(Thread.currentThread().getId()));
+
     }
 
     @AfterTest
     void teardown() {
+        String key = String.valueOf(Thread.currentThread().getId());
         BrowserActions4.closeDriverAndRemoveFromMap(key);
     }
 
     @Test
     void test1() {
+        Home4 home = new Home4(String.valueOf(Thread.currentThread().getId()));
         home.navigateToHome();
 
     }

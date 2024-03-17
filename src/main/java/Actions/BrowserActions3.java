@@ -36,7 +36,7 @@ public class BrowserActions3 {
         driver.close();
     }
 
-    enum Browsers{
+    public enum Browsers{
         chrome,
         firefox
     }
