@@ -1,4 +1,6 @@
+import POM.DocumentsPage;
 import POM.Home;
+import POM.HomePage;
 import POM.SelectingDocument;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -39,7 +41,18 @@ public class Test_0_UseSeleniumDirectlyInTestClass {
 
 
     @Test
+    public void test1(){
+        WebDriver driver1 = new ChromeDriver();
+        HomePage homePage = new HomePage(driver1);
+        homePage.navigate();
+        homePage.clickGetPAid();
+        DocumentsPage doc = new DocumentsPage(driver1);
+        doc.checkPrice();
+    }
+
+    @Test
     void testExchangeAWaiver() {
+
         driver.get(homepageURL);
         By element = new By.ByXPath(getPaid);
         new WebDriverWait(driver, 30).
@@ -55,6 +68,8 @@ public class Test_0_UseSeleniumDirectlyInTestClass {
                             (expectedElementLocator));
         }
         catch (Exception e){
+
+            driver.get(homepageURL);
             driver.findElement(element).click();
             if(new WebDriverWait(driver, 20).
                     until(ExpectedConditions.presenceOfElementLocated
@@ -64,11 +79,11 @@ public class Test_0_UseSeleniumDirectlyInTestClass {
             }
         }
 
-        WebElement price = driver.findElement(new By.ByXPath(String.format(priceSelector,"Release a Lien")));
+        WebElement price = driver.findElement(new By.ByXPath(String.format(priceSelector,"Exchange a Waiver")));
         new WebDriverWait(driver, 10).
                 until(ExpectedConditions.visibilityOf
                         (price));
-        Assert.assertEquals(price.getText(),"$149");
+        Assert.assertEquals(price.getText(),"Free");
 
     }
 
