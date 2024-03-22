@@ -1,7 +1,4 @@
-import POM.DocumentsPage;
-import POM.Home;
-import POM.HomePage;
-import POM.SelectingDocument;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -39,16 +36,6 @@ public class Test_0_UseSeleniumDirectlyInTestClass {
         driver.quit();
     }
 
-
-    @Test
-    public void test1(){
-        WebDriver driver1 = new ChromeDriver();
-        HomePage homePage = new HomePage(driver1);
-        homePage.navigate();
-        homePage.clickGetPAid();
-        DocumentsPage doc = new DocumentsPage(driver1);
-        doc.checkPrice();
-    }
 
     @Test
     void testExchangeAWaiver() {

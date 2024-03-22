@@ -44,7 +44,7 @@ public class BrowserActions4 {
 
 
     public static void closeDriverAndRemoveFromMap(String key){
-        mapper.get(key).close();
+        mapper.get(key).quit();
         mapper.remove(key);
     }
 

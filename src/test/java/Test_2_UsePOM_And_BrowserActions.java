@@ -33,7 +33,7 @@ public class Test_2_UsePOM_And_BrowserActions {
 
     @AfterTest
     public void teardown() {
-        BrowserActions.closeDriver();
+        BrowserActions.quitDriver();
     }
 
 

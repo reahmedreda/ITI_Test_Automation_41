@@ -20,7 +20,7 @@ public class Test_3_UseFluentPOM {
 
     @AfterTest
     public void teardown() {
-        BrowserActions.closeDriver();
+        BrowserActions.quitDriver();
     }
 
 

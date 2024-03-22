@@ -10,6 +10,7 @@ public class Test_00_BadExampleOfTestClassesDependencies {
         test0UseSeleniumDirectlyInTestClass.
                 setup();
         test0UseSeleniumDirectlyInTestClass.testExchangeAWaiver();
+        test0UseSeleniumDirectlyInTestClass.teardown();
     }
 
 }

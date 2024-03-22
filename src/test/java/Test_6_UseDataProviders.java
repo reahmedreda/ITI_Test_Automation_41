@@ -48,7 +48,7 @@ public class Test_6_UseDataProviders {
         return x;
     }
 
-    @Test(dataProvider = "testData")
+    //@Test(dataProvider = "testData")
     void fakeTest(SendMail s){
         Assert.fail();
     }

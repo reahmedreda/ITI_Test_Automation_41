@@ -36,6 +36,10 @@ public class BrowserActions3 {
         driver.close();
     }
 
+    public void quitDriver(){
+        driver.quit();
+    }
+
     public enum Browsers{
         chrome,
         firefox

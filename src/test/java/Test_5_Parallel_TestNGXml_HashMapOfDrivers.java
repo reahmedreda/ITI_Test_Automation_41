@@ -5,10 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class Test_5_Parallel_TestNGXml_HashMapOfDrivers {
 
@@ -18,7 +15,7 @@ public class Test_5_Parallel_TestNGXml_HashMapOfDrivers {
 
     @Parameters({"browser"})
     @BeforeTest
-    void setup(String browser) throws Exception {
+    void setup(@Optional("firefox") String browser) throws Exception {
 
         BrowserActions4.addWebDriverToMapOfDrivers(BrowserActions4.Browsers.valueOf(browser.toLowerCase()),
                 String.valueOf(Thread.currentThread().getId()));
