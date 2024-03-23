@@ -1,16 +1,11 @@
-import Actions.BrowserActions4;
-import POM.Home2;
+import Actions.BrowserActions4_UseArraylistOrMapOfDrivers;
 import POM.Home4;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 /*
 Same as previous class but uses Map instead of Array list which is way better
  */
-public class Test_5_Parallel_TestNGXml_HashMapOfDrivers {
+public class Test_4_2_Parallel_TestNGXml_HashMapOfDrivers {
 
     //This test should be run from test.xml
 
@@ -20,7 +15,7 @@ public class Test_5_Parallel_TestNGXml_HashMapOfDrivers {
     @BeforeTest
     void setup(@Optional("firefox") String browser) throws Exception {
 
-        BrowserActions4.addWebDriverToMapOfDrivers(BrowserActions4.Browsers.valueOf(browser.toLowerCase()),
+        BrowserActions4_UseArraylistOrMapOfDrivers.addWebDriverToMapOfDrivers(BrowserActions4_UseArraylistOrMapOfDrivers.Browsers.valueOf(browser.toLowerCase()),
                 String.valueOf(Thread.currentThread().getId()));
 
     }
@@ -28,7 +23,7 @@ public class Test_5_Parallel_TestNGXml_HashMapOfDrivers {
     @AfterTest
     void teardown() {
         String key = String.valueOf(Thread.currentThread().getId());
-        BrowserActions4.closeDriverAndRemoveFromMap(key);
+        BrowserActions4_UseArraylistOrMapOfDrivers.closeDriverAndRemoveFromMap(key);
     }
 
     @Test

@@ -1,6 +1,5 @@
 package POM;
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import static org.testng.Assert.*;
@@ -10,14 +9,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class Home {
+public class Home1 {
     String homepageURL = "https://www.levelset.com/";
     WebDriver driver;
     String createDocument = "//a[text()='Create a Document ']",
             getPaid = "//a[contains(text(),'Get paid')]";
 
 
-    public Home(WebDriver driver) {
+    public Home1(WebDriver driver) {
         this.driver = driver;
     }
 

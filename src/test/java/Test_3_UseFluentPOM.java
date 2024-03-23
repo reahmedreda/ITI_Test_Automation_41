@@ -1,4 +1,4 @@
-import Actions.BrowserActions3;
+import Actions.BrowserActions3_StaticSingleDriver;
 import POM.*;
 import org.testng.annotations.*;
 
@@ -10,11 +10,11 @@ so this will help creating a chain of function calls for better readability
 public class Test_3_UseFluentPOM {
     Home3 home;
 
-    BrowserActions3 BrowserActions;
+    BrowserActions3_StaticSingleDriver BrowserActions;
 
     @BeforeTest
     public void setup() {
-        BrowserActions = new BrowserActions3();
+        BrowserActions = new BrowserActions3_StaticSingleDriver();
         BrowserActions.initializeTheWebDriver("Chrome");
         BrowserActions.maximizeScreen();
         home = new Home3();

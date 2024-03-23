@@ -1,17 +1,14 @@
 package POM;
 
-import Actions.WebUIActions;
+import Actions.WebUIActions1_BasicImp_GetDriverInConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 
 public class SelectingDocument2 {
 
-    WebUIActions uiActions;
+    WebUIActions1_BasicImp_GetDriverInConstructor uiActions;
     String doc = "//div[@class='left' and contains(text(),'%s')]";
     String documentSearchSelector = "#document_search",
             documentSelector = "//div[text()='%s']",
@@ -20,7 +17,7 @@ public class SelectingDocument2 {
 
     public SelectingDocument2(){}
     public SelectingDocument2(WebDriver driver){
-        uiActions = new WebUIActions(driver);
+        uiActions = new WebUIActions1_BasicImp_GetDriverInConstructor(driver);
     }
 
     public void selectDocument(String doc){

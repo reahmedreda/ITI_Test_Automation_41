@@ -4,14 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.util.Locale;
-
-public class BrowserActions {
+public class BrowserActions1_BasicImp_returnDriver {
     WebDriver driver;
 
     //A normal Browser Actions class that is used to all actions can be done in the browser
 
-    public BrowserActions(){}
+    public BrowserActions1_BasicImp_returnDriver(){}
 
 
     // A function to initialize the webdriver and return it to the caller to be used

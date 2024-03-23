@@ -1,13 +1,8 @@
-import Actions.BrowserActions;
-import Actions.WebUIActions;
+import Actions.BrowserActions1_BasicImp_returnDriver;
+import Actions.WebUIActions1_BasicImp_GetDriverInConstructor;
 import POM.*;
-import org.junit.Before;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 /*
@@ -20,15 +15,15 @@ public class Test_2_UsePOM_And_BrowserActions {
     WebDriver driver;
     Home2 home;
     SelectingDocument2 selectDoc;
-    BrowserActions BrowserActions;
-    WebUIActions actions;
+    BrowserActions1_BasicImp_returnDriver BrowserActions;
+    WebUIActions1_BasicImp_GetDriverInConstructor actions;
 
     @BeforeTest
     public void setup() {
-        BrowserActions = new BrowserActions();
+        BrowserActions = new BrowserActions1_BasicImp_returnDriver();
         driver = BrowserActions.initializeTheWebDriver("Chrome");
         BrowserActions.maximizeScreen();
-        actions = new WebUIActions(driver);
+        actions = new WebUIActions1_BasicImp_GetDriverInConstructor(driver);
 
         home = new Home2(driver);
         selectDoc = new SelectingDocument2(driver);

@@ -7,21 +7,21 @@
         <parameter name="browser" value="Chrome" />
         <parameter name="uniqueKey" value="TestOnChrome" />
         <classes>
-            <class name="Test_5_Parallel_TestNGXml_HashMapOfDrivers"></class>
+            <class name="Test_4_2_Parallel_TestNGXml_HashMapOfDrivers"></class>
         </classes>
     </test>
     <test name="OnFireFox">
         <parameter name="browser" value="firefox" />
         <parameter name="uniqueKey" value="TestOnFireFox" />
         <classes>
-            <class name="Test_5_Parallel_TestNGXml_HashMapOfDrivers"/>
+            <class name="Test_4_2_Parallel_TestNGXml_HashMapOfDrivers"/>
         </classes>
     </test>
     <test name="OnFireFox2">
         <parameter name="browser" value="firefox" />
         <parameter name="uniqueKey" value="TestOnFireFox2" />
         <classes>
-            <class name="Test_5_Parallel_TestNGXml_HashMapOfDrivers"/>
+            <class name="Test_4_2_Parallel_TestNGXml_HashMapOfDrivers"/>
         </classes>
     </test>
 </suite>

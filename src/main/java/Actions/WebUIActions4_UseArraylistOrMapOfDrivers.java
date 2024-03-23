@@ -8,11 +8,21 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import static Actions.BrowserActions3.driver;
-import static org.testng.Assert.assertEquals;
+
 import static org.testng.Assert.assertNotNull;
 
-public class WebUIActions3 {
+
+public class WebUIActions4_UseArraylistOrMapOfDrivers {
+
+    public WebDriver driver;
+
+    public WebUIActions4_UseArraylistOrMapOfDrivers(int i){
+        this.driver= BrowserActions4_UseArraylistOrMapOfDrivers.drivers.get(i);
+    }
+
+    public WebUIActions4_UseArraylistOrMapOfDrivers(String key){
+        this.driver= BrowserActions4_UseArraylistOrMapOfDrivers.mapper.get(key);
+    }
 
     public void clickOn(String selector,Locators l,boolean assertion,String expectedElementSelector,Locators l2) {
         By b = returnElementLocatorBy(selector,l);
@@ -34,11 +44,11 @@ public class WebUIActions3 {
                 Assert.fail("Couldn't click because of" + c.getMessage());
             }
         }
-        new WebDriverWait(driver, 20).until(
+        new WebDriverWait(driver, 10).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
 
         By expectedElement = returnElementLocatorBy(expectedElementSelector,l2);
-        assertNotNull(waitUntil(expectedElement,ExpectedConditionsEnum.ElementToBeClickable));
+        assertNotNull(waitUntil(expectedElement, ExpectedConditionsEnum.ElementToBeClickable));
     }
 
     public WebElement waitUntil(By b, ExpectedConditionsEnum condition) {
@@ -47,11 +57,11 @@ public class WebUIActions3 {
             switch (condition) {
                 case presenceOfElement:
 
-                    element = (new WebDriverWait(driver,15)).until(ExpectedConditions.presenceOfElementLocated(b));
+                    element = (new WebDriverWait(driver,6)).until(ExpectedConditions.presenceOfElementLocated(b));
                     return element;
 
                 case ElementToBeClickable:
-                    element = (new WebDriverWait(driver, 15)).until(ExpectedConditions.elementToBeClickable(b));
+                    element = (new WebDriverWait(driver, 6)).until(ExpectedConditions.elementToBeClickable(b));
                     return element;
 
 

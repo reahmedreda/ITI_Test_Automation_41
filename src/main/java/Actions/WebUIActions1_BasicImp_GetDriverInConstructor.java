@@ -11,9 +11,9 @@ import org.testng.Assert;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
-public class WebUIActions {
+public class WebUIActions1_BasicImp_GetDriverInConstructor {
     WebDriver driver;
-    public WebUIActions(WebDriver driver){
+    public WebUIActions1_BasicImp_GetDriverInConstructor(WebDriver driver){
         this.driver= driver;
     }
 

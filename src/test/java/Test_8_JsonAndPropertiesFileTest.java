@@ -1,17 +1,10 @@
-import Actions.BrowserActions;
-import POM.Home2;
 import Wrappers.JsonFileParser;
-import Wrappers.LoggingHandling;
 import Wrappers.PropertiesFileHandler;
 
 import org.json.JSONObject;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.List;
 

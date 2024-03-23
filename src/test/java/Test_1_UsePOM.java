@@ -1,4 +1,4 @@
-import POM.Home;
+import POM.Home1;
 import POM.SelectingDocument;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,7 +17,7 @@ Resolving the problems caused in the previous 2 Classes by using POM
 public class Test_1_UsePOM {
 
     WebDriver driver;
-    Home home;
+    Home1 home;
     SelectingDocument selectDoc;
     String browser = "Chrome";
 
@@ -34,7 +34,7 @@ public class Test_1_UsePOM {
         }
 
         driver.manage().window().maximize();
-        home = new Home(driver);
+        home = new Home1(driver);
         selectDoc = new SelectingDocument(driver);
     }
 
