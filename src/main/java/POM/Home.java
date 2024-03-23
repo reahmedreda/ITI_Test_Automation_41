@@ -16,12 +16,12 @@ public class Home {
     String createDocument = "//a[text()='Create a Document ']",
             getPaid = "//a[contains(text(),'Get paid')]";
 
+
     public Home(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void navigateHome() {
-
+    public void navigateToHome() {
         driver.get(homepageURL);
         WebElement expectedElement = driver.findElement(new By.ByXPath(getPaid));
         new WebDriverWait(driver, 20).
@@ -29,8 +29,32 @@ public class Home {
                         (expectedElement));
     }
 
-    public void clickOnGetPaid() {
+    public void clickOnGetPaid_Basic() {
+        By element = new By.ByXPath(getPaid);
+        new WebDriverWait(driver, 20).
+                until(ExpectedConditions.elementToBeClickable
+                        (element));
+        driver.findElement(element).click();
+    }
 
+    public void clickOnGetPaid_PostValidation() {
+        By element = new By.ByXPath(getPaid);
+        new WebDriverWait(driver, 20).
+                until(ExpectedConditions.elementToBeClickable
+                        (element));
+        driver.findElement(element).click();
+        By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
+        try {
+            new WebDriverWait(driver, 20).
+                    until(ExpectedConditions.presenceOfElementLocated
+                            (expectedElementLocator));
+        } catch (Exception e) {
+            Assert.fail("Element not found");
+        }
+
+    }
+
+    public void clickOnGetPaid_PostValidationAndExceptionHandling() {
             By element = new By.ByXPath(getPaid);
             new WebDriverWait(driver, 20).
                     until(ExpectedConditions.elementToBeClickable
@@ -56,25 +80,23 @@ public class Home {
     }
 
 
-    public void clickOnGetPaid2() {
-        By element = new By.ByXPath(getPaid);
-        new WebDriverWait(driver, 20).
-                until(ExpectedConditions.elementToBeClickable
-                        (element));
-        driver.findElement(element).click();
-        By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
-        try {
-            new WebDriverWait(driver, 20).
-                    until(ExpectedConditions.presenceOfElementLocated
-                            (expectedElementLocator));
-        } catch (Exception e) {
-            Assert.fail("Element not found");
-        }
 
 
-    }
+
+    //============================ Further initial Optimisations ====================================
+   /*
+   This is the wrong place to implement such generic functions, it's just
+   for demo how the generalisation and optimisation cycle evolves by time
+   and then we will have to move those generic functions to a centeralised
+   class so every POM class can use it
+    */
 
 
+
+   /*
+   Generic Function for clicking on any element and retry 3 times to achieve this
+   action and validate the action by checking the presence of an expected element
+    */
     public boolean clickOnElement(By element, By expectedElement) {
         for (int i = 0; i < 3; i++) {
             try {
@@ -90,58 +112,17 @@ public class Home {
 
             } catch (Exception e) {
 
-                Assert.fail();
+                return  false;
             }
         }
-        return true;
+        return false;
     }
 
 
-
-
-
-
-    public void navigateToHome(){
-        driver.get(homepageURL);
-        By element = new By.ByXPath(getPaid);
-        assertTrue(validateOnElement(element,"clickable"));
-        /*try {
-            (new WebDriverWait(driver, 6))
-                    .until(ExpectedConditions.presenceOfElementLocated(new By.ByXPath(labelPaymentHereSelector)));
-        }
-        catch(Exception e){
-            Assert.fail();
-        }*/
-    }
-
-
-    public void pressCreateDocument0(){
-        By element = new By.ByXPath(createDocument);
-
-        new WebDriverWait(driver, 10).
-                until(ExpectedConditions.elementToBeClickable
-                        (element));
-
-           driver.findElement(element).click();
-
-            By expectedElementLocator = new By.ByCssSelector(new SelectingDocument(driver).documentSearchSelector);
-        try {
-            new WebDriverWait(driver, 10).
-                    until(ExpectedConditions.presenceOfElementLocated
-                            (expectedElementLocator));
-        }
-        catch (Exception e){
-            Assert.fail("Element not found");
-        }
-
-    }
-
-
-
-
-
-    //==================================================================
-    public boolean validateOnBtn(By element){
+    /*
+    generic function to check if an element is clickable or not
+     */
+    public boolean validateClickabilityOfElement(By element){
         try {
             new WebDriverWait(driver, 10).
                     until(ExpectedConditions.elementToBeClickable
@@ -153,6 +134,9 @@ public class Home {
         }
     }
 
+    /*
+    check presence of element
+     */
     public boolean validatePresenceOfElement(By element) {
         try {
             new WebDriverWait(driver, 10).
@@ -166,27 +150,29 @@ public class Home {
     }
 
 
-    public void pressCreateDocument1(){
+    public void clickOnGetPaid_usingBasicGenericFunctions(){
 
-        By element = new By.ByXPath(createDocument);
+        By element = new By.ByXPath(getPaid);
 
-        if(validatePresenceOfElement(element)) {
+        if(validateClickabilityOfElement(element)) {
             driver.findElement(element).click();
-            By expectedElementLocator = new By.ByCssSelector(new SelectingDocument(driver).documentSearchSelector);
+            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
             assertTrue(validatePresenceOfElement(expectedElementLocator));
         }
     }
 
 
-    //==================================================================
+    //================================ Further Generic func===============================
     public boolean validateOnElement(By element, String s){
         ExpectedCondition<WebElement> x = null;
         switch (s){
             case "presence":
+
                 x = ExpectedConditions.presenceOfElementLocated(element);
 
                 break;
             case "clickable":
+
                 x= ExpectedConditions.elementToBeClickable(element);
                 break;
 
@@ -208,14 +194,14 @@ public class Home {
         }
     }
 
-    public void pressCreateDocument2(){
+    public void clickOnGetPaid(){
 
-        By element = new By.ByXPath(createDocument);
+        By element = new By.ByXPath(getPaid);
 
         if(validateOnElement(element,"clickable")) {
             driver.findElement(element).click();
 
-            By expectedElementLocator = new By.ByCssSelector(new SelectingDocument(driver).documentSearchSelector);
+            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
             assertTrue(validateOnElement(expectedElementLocator,"presence"));
         }
     }
@@ -223,6 +209,10 @@ public class Home {
 
     //==================================================================
 
+    /*
+    instead of having switch case for all types we can simply send
+    Expected condition object as param
+     */
     public boolean validateOnElement2(By element, ExpectedCondition<WebElement> s){
         try{
             new WebDriverWait(driver, 10).until(s);
@@ -233,20 +223,21 @@ public class Home {
         }
     }
 
-    public void pressCreateDocument3(){
+    public void clickOnGetPaid2(){
 
         By element = new By.ByXPath(createDocument);
 
         if(validateOnElement2(element,ExpectedConditions.elementToBeClickable(element))) {
             driver.findElement(element).click();
 
-            By expectedElementLocator = new By.ByCssSelector(new SelectingDocument(driver).documentSearchSelector);
+            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
             assertTrue(validateOnElement2(expectedElementLocator,ExpectedConditions.presenceOfElementLocated(expectedElementLocator)));
         }
     }
 
 
     //==================================================================
+
     public void clickOnBtn(By element,By expectedElement){
         if(validateOnElement2(element,ExpectedConditions.elementToBeClickable(element))) {
             driver.findElement(element).click();
@@ -257,32 +248,10 @@ public class Home {
     }
 
 
-    public void pressCreateDocument4(){
-       By element = new By.ByXPath(createDocument),
-            expectedElement = new By.ByCssSelector(new SelectingDocument(driver).documentSearchSelector);
+    public void clickOnGetPaid3(){
+       By element = new By.ByXPath(getPaid),
+            expectedElement = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
         clickOnBtn(element,expectedElement);
-    }
-
-
-
-    //==================================================================
-
-
-
-
-
-
-
-
-
-
-
-    public void pressRequestADocument(){
-       validateOnBtn(new By.ByXPath(createDocument));
-        driver.findElement(new By.ByXPath(createDocument)).click();
-        validatePresenceOfElement(new By.ByCssSelector(
-               new SelectingDocument(driver).documentSearchSelector));
-
     }
 
 }

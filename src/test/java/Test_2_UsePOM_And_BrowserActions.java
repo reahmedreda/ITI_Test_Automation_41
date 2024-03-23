@@ -10,7 +10,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
-
+/*
+Moving the Browser configurations from hardcoded writing in the setup
+to be in a separate Class, so it can be modular and reusable for all other
+test classes
+ */
 
 public class Test_2_UsePOM_And_BrowserActions {
     WebDriver driver;

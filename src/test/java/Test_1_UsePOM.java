@@ -10,6 +10,9 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
+/*
+Resolving the problems caused in the previous 2 Classes by using POM
+ */
 
 public class Test_1_UsePOM {
 

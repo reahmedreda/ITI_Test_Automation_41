@@ -13,6 +13,10 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+/*
+This test class represents a very basic scripting for test automation where
+all the code is written in one place and not modular or reusable
+ */
 
 public class Test_0_UseSeleniumDirectlyInTestClass {
     String homepageURL = "https://www.levelset.com/";

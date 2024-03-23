@@ -2,8 +2,7 @@ package POM;
 
 import Actions.*;
 import Actions.WebUIActions3;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 
 public class Home3 {
     String homepageURL = "https://www.levelset.com/";

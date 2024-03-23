@@ -7,6 +7,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+/*
+Same as previous class but uses Map instead of Array list which is way better
+ */
 public class Test_5_Parallel_TestNGXml_HashMapOfDrivers {
 
     //This test should be run from test.xml
