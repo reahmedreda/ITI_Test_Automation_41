@@ -18,7 +18,7 @@ public class Test_2_UsePOM_And_BrowserActions {
     BrowserActions1_BasicImp_returnDriver BrowserActions;
     WebUIActions1_BasicImp_GetDriverInConstructor actions;
 
-    @BeforeTest
+    @BeforeMethod
     public void setup() {
         BrowserActions = new BrowserActions1_BasicImp_returnDriver();
         driver = BrowserActions.initializeTheWebDriver("Chrome");
@@ -30,7 +30,7 @@ public class Test_2_UsePOM_And_BrowserActions {
     }
 
 
-    @AfterTest
+    @AfterMethod
     public void teardown() {
         BrowserActions.quitDriver();
     }

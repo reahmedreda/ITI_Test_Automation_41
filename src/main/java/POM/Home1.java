@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.time.Duration;
+
 public class Home1 {
     String homepageURL = "https://www.levelset.com/";
     WebDriver driver;
@@ -23,14 +25,14 @@ public class Home1 {
     public void navigateToHome() {
         driver.get(homepageURL);
         WebElement expectedElement = driver.findElement(new By.ByXPath(getPaid));
-        new WebDriverWait(driver, 20).
+        new WebDriverWait(driver, Duration.ofSeconds(10)).
                 until(ExpectedConditions.visibilityOf
                         (expectedElement));
     }
 
     public void clickOnGetPaid_Basic() {
         By element = new By.ByXPath(getPaid);
-        new WebDriverWait(driver, 20).
+        new WebDriverWait(driver, Duration.ofSeconds(10)).
                 until(ExpectedConditions.elementToBeClickable
                         (element));
         driver.findElement(element).click();
@@ -38,13 +40,13 @@ public class Home1 {
 
     public void clickOnGetPaid_PostValidation() {
         By element = new By.ByXPath(getPaid);
-        new WebDriverWait(driver, 20).
+        new WebDriverWait(driver, Duration.ofSeconds(10)).
                 until(ExpectedConditions.elementToBeClickable
                         (element));
         driver.findElement(element).click();
         By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
         try {
-            new WebDriverWait(driver, 20).
+            new WebDriverWait(driver, Duration.ofSeconds(10)).
                     until(ExpectedConditions.presenceOfElementLocated
                             (expectedElementLocator));
         } catch (Exception e) {
@@ -55,20 +57,20 @@ public class Home1 {
 
     public void clickOnGetPaid_PostValidationAndExceptionHandling() {
             By element = new By.ByXPath(getPaid);
-            new WebDriverWait(driver, 20).
+            new WebDriverWait(driver, Duration.ofSeconds(10)).
                     until(ExpectedConditions.elementToBeClickable
                             (element));
             driver.findElement(element).click();
             By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
             try {
-                new WebDriverWait(driver, 20).
+                new WebDriverWait(driver, Duration.ofSeconds(10)).
                         until(ExpectedConditions.presenceOfElementLocated
                                 (expectedElementLocator));
             } catch (Exception e) {
 
                 Actions act = new Actions(driver);
                 act.doubleClick(driver.findElement(element)).perform();
-                if (new WebDriverWait(driver, 20).
+                if (new WebDriverWait(driver, Duration.ofSeconds(10)).
                         until(ExpectedConditions.presenceOfElementLocated
                                 (expectedElementLocator)) == null) {
 
@@ -99,11 +101,11 @@ public class Home1 {
     public boolean clickOnElement(By element, By expectedElement) {
         for (int i = 0; i < 3; i++) {
             try {
-                new WebDriverWait(driver, 20).
+                new WebDriverWait(driver, Duration.ofSeconds(10)).
                         until(ExpectedConditions.elementToBeClickable
                                 (element));
                 driver.findElement(element).click();
-                if (new WebDriverWait(driver, 20).
+                if (new WebDriverWait(driver, Duration.ofSeconds(10)).
                         until(ExpectedConditions.presenceOfElementLocated
                                 (expectedElement)) != null) {
                     return true;
@@ -123,7 +125,7 @@ public class Home1 {
      */
     public boolean validateClickabilityOfElement(By element){
         try {
-            new WebDriverWait(driver, 10).
+            new WebDriverWait(driver, Duration.ofSeconds(10)).
                     until(ExpectedConditions.elementToBeClickable
                             (element));
             return true;
@@ -138,7 +140,7 @@ public class Home1 {
      */
     public boolean validatePresenceOfElement(By element) {
         try {
-            new WebDriverWait(driver, 10).
+            new WebDriverWait(driver, Duration.ofSeconds(10)).
                     until(ExpectedConditions.presenceOfElementLocated
                             (element));
             return true;
@@ -176,7 +178,7 @@ public class Home1 {
                 break;
 
             case "Visibility":
-                new WebDriverWait(driver, 10).
+                new WebDriverWait(driver, Duration.ofSeconds(10)).
                         until(ExpectedConditions.visibilityOfElementLocated(element));
                 break;
 
@@ -184,7 +186,7 @@ public class Home1 {
         }
         try {
             if(x!=null) {
-                new WebDriverWait(driver, 20).until(x);
+                new WebDriverWait(driver, Duration.ofSeconds(10)).until(x);
             }
             return true;
         }
@@ -214,7 +216,7 @@ public class Home1 {
      */
     public boolean validateOnElement2(By element, ExpectedCondition<WebElement> s){
         try{
-            new WebDriverWait(driver, 10).until(s);
+            new WebDriverWait(driver, Duration.ofSeconds(10)).until(s);
             return true;
         }
         catch(Exception e){

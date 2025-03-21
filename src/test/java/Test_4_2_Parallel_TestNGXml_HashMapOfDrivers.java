@@ -12,7 +12,7 @@ public class Test_4_2_Parallel_TestNGXml_HashMapOfDrivers {
 
 
     @Parameters({"browser"})
-    @BeforeTest
+    @BeforeMethod
     void setup(@Optional("firefox") String browser) throws Exception {
 
         BrowserActions4_UseArraylistOrMapOfDrivers.addWebDriverToMapOfDrivers(BrowserActions4_UseArraylistOrMapOfDrivers.Browsers.valueOf(browser.toLowerCase()),
@@ -20,7 +20,7 @@ public class Test_4_2_Parallel_TestNGXml_HashMapOfDrivers {
 
     }
 
-    @AfterTest
+    @AfterMethod
     void teardown() {
         String key = String.valueOf(Thread.currentThread().getId());
         BrowserActions4_UseArraylistOrMapOfDrivers.closeDriverAndRemoveFromMap(key);

@@ -1,7 +1,7 @@
 import Actions.BrowserActions4_UseArraylistOrMapOfDrivers;
 import POM.Home4;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /*
@@ -13,12 +13,12 @@ public class Test_4_1_UseMultipleDrivers_ArrayList {
     Home4 home;
     int driverNo;
 
-    @BeforeTest
+    @BeforeMethod
     void setup() {
         driverNo= BrowserActions4_UseArraylistOrMapOfDrivers.addWebDriverToListOfDrivers("Chrome");
     }
 
-    @AfterTest
+    @AfterMethod
     void teardown() {
         BrowserActions4_UseArraylistOrMapOfDrivers.closeDriverAndRemoveFromList(driverNo);
     }

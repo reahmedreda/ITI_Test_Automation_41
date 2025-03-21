@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.time.Duration;
+
 import static org.testng.Assert.assertNotNull;
 
 
@@ -40,7 +42,7 @@ public class WebUIActions5_UseThreadLocalOfDrivers {
                 Assert.fail("Couldn't click because of" + c.getMessage());
             }
         }
-        new WebDriverWait(driver, 10).until(
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
 
         By expectedElement = returnElementLocatorBy(expectedElementSelector,l2);
@@ -53,11 +55,11 @@ public class WebUIActions5_UseThreadLocalOfDrivers {
             switch (condition) {
                 case presenceOfElement:
 
-                    element = (new WebDriverWait(driver,6)).until(ExpectedConditions.presenceOfElementLocated(b));
+                    element = (new WebDriverWait(driver,Duration.ofSeconds(10))).until(ExpectedConditions.presenceOfElementLocated(b));
                     return element;
 
                 case ElementToBeClickable:
-                    element = (new WebDriverWait(driver, 6)).until(ExpectedConditions.elementToBeClickable(b));
+                    element = (new WebDriverWait(driver, Duration.ofSeconds(10))).until(ExpectedConditions.elementToBeClickable(b));
                     return element;
 
 
@@ -74,7 +76,7 @@ public class WebUIActions5_UseThreadLocalOfDrivers {
 
     public WebElement waitUntil(By element, ExpectedCondition<WebElement> s){
         try{
-            return new WebDriverWait(driver, 10).until(s);
+            return new WebDriverWait(driver, Duration.ofSeconds(10)).until(s);
 
         }
         catch(Exception e){
@@ -85,7 +87,7 @@ public class WebUIActions5_UseThreadLocalOfDrivers {
     public void navigateToPage(String url,String selector,Locators l) {
         driver.get(url);
         By b = returnElementLocatorBy(selector,l);
-        new WebDriverWait(driver, 10).until(
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
 
         WebElement element = waitUntil(b, ExpectedConditionsEnum.presenceOfElement);

@@ -12,7 +12,7 @@ public class Test_3_UseFluentPOM {
 
     BrowserActions3_StaticSingleDriver BrowserActions;
 
-    @BeforeTest
+    @BeforeMethod
     public void setup() {
         BrowserActions = new BrowserActions3_StaticSingleDriver();
         BrowserActions.initializeTheWebDriver("Chrome");
@@ -21,7 +21,7 @@ public class Test_3_UseFluentPOM {
 
     }
 
-    @AfterTest
+    @AfterMethod
     public void teardown() {
         BrowserActions.quitDriver();
     }

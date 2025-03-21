@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.time.Duration;
+
 public class SelectingDocument {
     WebDriver driver ;
     String doc = "//div[@class='left' and contains(text(),'%s')]";
@@ -24,7 +26,7 @@ public class SelectingDocument {
 
     public void selectDocument(String doc){
         try {
-            WebElement element = new WebDriverWait(driver, 10).
+            WebElement element = new WebDriverWait(driver, Duration.ofSeconds(10)).
                     until(ExpectedConditions.presenceOfElementLocated
                             (new By.ByXPath(String.format(documentSelector, doc))));
             element.click();
@@ -39,7 +41,7 @@ public class SelectingDocument {
 
     public boolean checkIfPriceIsFree(String doc){
         try{
-            new WebDriverWait(driver,10).
+            new WebDriverWait(driver,Duration.ofSeconds(10)).
                     until(ExpectedConditions.presenceOfElementLocated
                             (new By.ByXPath(String.format(priceFreeSelector,doc))));
             return true;
@@ -51,7 +53,7 @@ public class SelectingDocument {
 
     public String getPrice(String doc){
         WebElement price = driver.findElement(new By.ByXPath(String.format(priceSelector,doc)));
-        new WebDriverWait(driver, 20).
+        new WebDriverWait(driver, Duration.ofSeconds(10)).
                 until(ExpectedConditions.visibilityOf
                         (price));
         return price.getText();
