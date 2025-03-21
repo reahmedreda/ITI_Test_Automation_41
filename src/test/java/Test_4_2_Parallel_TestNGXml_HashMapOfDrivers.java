@@ -30,6 +30,17 @@ public class Test_4_2_Parallel_TestNGXml_HashMapOfDrivers {
     void test1() {
         Home3_ActionsWithArrayListOrMap home = new Home3_ActionsWithArrayListOrMap(String.valueOf(Thread.currentThread().getId()));
         home.navigateToHome();
+    }
+    @Test
+    void test2() {
+        Home3_ActionsWithArrayListOrMap home = new Home3_ActionsWithArrayListOrMap(String.valueOf(Thread.currentThread().getId()));
+        home.navigateToHome();
+
+    }
+    @Test
+    void test3() {
+        Home3_ActionsWithArrayListOrMap home = new Home3_ActionsWithArrayListOrMap(String.valueOf(Thread.currentThread().getId()));
+        home.navigateToHome();
 
     }
 
