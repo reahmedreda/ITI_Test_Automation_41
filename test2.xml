@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Testing" parallel="tests" thread-count="2" verbose="0">
     <test name="OnChrome">
-        <parameter name="browser" value="Chrome" />
+        <parameter name="browser" value="chrome" />
         <classes>
             <class name="Test_9_1_TestBaseChild1"/>
         </classes>
     </test>
 
     <test name="retry">
-        <parameter name="browser" value="Chrome" />
+        <parameter name="browser" value="chrome" />
         <classes>
             <class name="Test_7_RetryAnalyzer"/>
         </classes>
     </test>
 
     <test name="OnFireFox">
-        <parameter name="browser" value="FireFox"></parameter>
+        <parameter name="browser" value="firefox"></parameter>
         <classes>
             <class name="Test_9_1_TestBaseChild2">
             </class>

@@ -1,14 +1,12 @@
-import POM.Home3_ActionsWithArrayListOrMap;
-import org.testng.ITestContext;
+import POM.Home4_ActionsWithThreadLocal;
 import org.testng.annotations.Test;
 
-public class Test_9_1_TestBaseChild1 extends Test_9_0_UseTestBase_MultipleDrivers_Map {
+public class Test_9_1_TestBaseChild1 extends Test_9_0_UseTestBase_ThreadLocal {
 
     //This test should be run from test2.xml
     @Test
-    public void test1(ITestContext context){
-
-        Home3_ActionsWithArrayListOrMap home = new Home3_ActionsWithArrayListOrMap(uniqueKey);
+    public void test1(){
+        Home4_ActionsWithThreadLocal home = new Home4_ActionsWithThreadLocal();
         home.navigateToHome();
     }
 }
