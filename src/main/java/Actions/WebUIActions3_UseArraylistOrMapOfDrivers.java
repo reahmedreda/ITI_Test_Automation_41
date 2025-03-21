@@ -2,6 +2,7 @@ package Actions;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,11 +11,20 @@ import org.testng.Assert;
 
 import java.time.Duration;
 
-import static Actions.BrowserActions3_StaticSingleDriver.driver;
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
-public class WebUIActions3_UseSingleStaticDriver {
+
+public class WebUIActions3_UseArraylistOrMapOfDrivers {
+
+    public WebDriver driver;
+
+    public WebUIActions3_UseArraylistOrMapOfDrivers(int i){
+        this.driver= BrowserActions3_UseArraylistOrMapOfDrivers.drivers.get(i);
+    }
+
+    public WebUIActions3_UseArraylistOrMapOfDrivers(String key){
+        this.driver= BrowserActions3_UseArraylistOrMapOfDrivers.mapper.get(key);
+    }
 
     public void clickOn(String selector,Locators l,boolean assertion,String expectedElementSelector,Locators l2) {
         By b = returnElementLocatorBy(selector,l);
@@ -40,7 +50,7 @@ public class WebUIActions3_UseSingleStaticDriver {
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
 
         By expectedElement = returnElementLocatorBy(expectedElementSelector,l2);
-        assertNotNull(waitUntil(expectedElement,ExpectedConditionsEnum.ElementToBeClickable));
+        assertNotNull(waitUntil(expectedElement, ExpectedConditionsEnum.ElementToBeClickable));
     }
 
     public WebElement waitUntil(By b, ExpectedConditionsEnum condition) {

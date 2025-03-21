@@ -1,5 +1,5 @@
-import Actions.BrowserActions4_UseArraylistOrMapOfDrivers;
-import POM.Home4;
+import Actions.BrowserActions3_UseArraylistOrMapOfDrivers;
+import POM.Home3_ActionsWithArrayListOrMap;
 import org.testng.annotations.*;
 
 /*
@@ -15,7 +15,7 @@ public class Test_4_2_Parallel_TestNGXml_HashMapOfDrivers {
     @BeforeMethod
     void setup(@Optional("firefox") String browser) throws Exception {
 
-        BrowserActions4_UseArraylistOrMapOfDrivers.addWebDriverToMapOfDrivers(BrowserActions4_UseArraylistOrMapOfDrivers.Browsers.valueOf(browser.toLowerCase()),
+        BrowserActions3_UseArraylistOrMapOfDrivers.addWebDriverToMapOfDrivers(BrowserActions3_UseArraylistOrMapOfDrivers.Browsers.valueOf(browser.toLowerCase()),
                 String.valueOf(Thread.currentThread().getId()));
 
     }
@@ -23,12 +23,12 @@ public class Test_4_2_Parallel_TestNGXml_HashMapOfDrivers {
     @AfterMethod
     void teardown() {
         String key = String.valueOf(Thread.currentThread().getId());
-        BrowserActions4_UseArraylistOrMapOfDrivers.closeDriverAndRemoveFromMap(key);
+        BrowserActions3_UseArraylistOrMapOfDrivers.closeDriverAndRemoveFromMap(key);
     }
 
     @Test
     void test1() {
-        Home4 home = new Home4(String.valueOf(Thread.currentThread().getId()));
+        Home3_ActionsWithArrayListOrMap home = new Home3_ActionsWithArrayListOrMap(String.valueOf(Thread.currentThread().getId()));
         home.navigateToHome();
 
     }

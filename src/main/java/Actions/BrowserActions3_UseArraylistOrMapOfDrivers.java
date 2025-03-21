@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BrowserActions4_UseArraylistOrMapOfDrivers {
+public class BrowserActions3_UseArraylistOrMapOfDrivers {
     // The goal of this version is to have multiple drivers running on the same device without selenium grid
     // We have to link each driver with its Test class or test method or test suite ... etc
     // The linking will be done in 2 ways
@@ -57,7 +57,7 @@ public class BrowserActions4_UseArraylistOrMapOfDrivers {
     // but it will keep storing in the memory -> waste of memory
 
     public static int addWebDriverToListOfDrivers(String browser) {
-        if(browser.toLowerCase().equals(BrowserActions4_UseArraylistOrMapOfDrivers.Browsers.chrome.toString())) {
+        if(browser.toLowerCase().equals(BrowserActions3_UseArraylistOrMapOfDrivers.Browsers.chrome.toString())) {
                 drivers.add(new ChromeDriver());
                 // returning the last index of the list which is our driver index
                 // A note: if 2 TC called this function at the exact same time , there is a possibility of returning wrong index
@@ -73,10 +73,10 @@ public class BrowserActions4_UseArraylistOrMapOfDrivers {
         // Ex { 0,1 ,2,3, 4, 5,6 } if I deleted 4 -> index 5 will be 4 and index 6 will be 5 and in the TC when trying
         // to fetch driver in index 6 will give us index out of bound
         // the workaround it to either close only:
-        BrowserActions4_UseArraylistOrMapOfDrivers.drivers.get(index).close();
+        BrowserActions3_UseArraylistOrMapOfDrivers.drivers.get(index).close();
 
         //Or close and then set it with null
-        BrowserActions4_UseArraylistOrMapOfDrivers.drivers.set(index,null);
+        BrowserActions3_UseArraylistOrMapOfDrivers.drivers.set(index,null);
     }
 
 

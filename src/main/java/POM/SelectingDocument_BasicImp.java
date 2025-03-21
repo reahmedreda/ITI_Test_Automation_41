@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 import java.time.Duration;
 
-public class SelectingDocument {
+public class SelectingDocument_BasicImp {
     WebDriver driver ;
     String doc = "//div[@class='left' and contains(text(),'%s')]";
     public String documentSearchSelector = "#document_search",
@@ -20,7 +20,7 @@ public class SelectingDocument {
                     "//div[@class='left' and contains(text(),'%s')]//parent::Div//span[@class='price-amount']";
 
 
-    public SelectingDocument(WebDriver driver){
+    public SelectingDocument_BasicImp(WebDriver driver){
         this.driver = driver;
     }
 

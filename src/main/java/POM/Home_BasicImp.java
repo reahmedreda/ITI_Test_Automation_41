@@ -11,14 +11,14 @@ import org.testng.Assert;
 
 import java.time.Duration;
 
-public class Home1 {
+public class Home_BasicImp {
     String homepageURL = "https://www.levelset.com/";
     WebDriver driver;
     String createDocument = "//a[text()='Create a Document ']",
             getPaid = "//a[contains(text(),'Get paid')]";
 
 
-    public Home1(WebDriver driver) {
+    public Home_BasicImp(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -44,7 +44,7 @@ public class Home1 {
                 until(ExpectedConditions.elementToBeClickable
                         (element));
         driver.findElement(element).click();
-        By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
+        By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument_BasicImp(driver).doc, "Exchange a Waiver"));
         try {
             new WebDriverWait(driver, Duration.ofSeconds(10)).
                     until(ExpectedConditions.presenceOfElementLocated
@@ -61,7 +61,7 @@ public class Home1 {
                     until(ExpectedConditions.elementToBeClickable
                             (element));
             driver.findElement(element).click();
-            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
+            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument_BasicImp(driver).doc, "Exchange a Waiver"));
             try {
                 new WebDriverWait(driver, Duration.ofSeconds(10)).
                         until(ExpectedConditions.presenceOfElementLocated
@@ -157,7 +157,7 @@ public class Home1 {
 
         if(validateClickabilityOfElement(element)) {
             driver.findElement(element).click();
-            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
+            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument_BasicImp(driver).doc, "Exchange a Waiver"));
             assertTrue(validatePresenceOfElement(expectedElementLocator));
         }
     }
@@ -202,7 +202,7 @@ public class Home1 {
         if(validateOnElement(element,"clickable")) {
             driver.findElement(element).click();
 
-            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
+            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument_BasicImp(driver).doc, "Exchange a Waiver"));
             assertTrue(validateOnElement(expectedElementLocator,"presence"));
         }
     }
@@ -231,7 +231,7 @@ public class Home1 {
         if(validateOnElement2(element,ExpectedConditions.elementToBeClickable(element))) {
             driver.findElement(element).click();
 
-            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
+            By expectedElementLocator = new By.ByXPath(String.format(new SelectingDocument_BasicImp(driver).doc, "Exchange a Waiver"));
             assertTrue(validateOnElement2(expectedElementLocator,ExpectedConditions.presenceOfElementLocated(expectedElementLocator)));
         }
     }
@@ -251,7 +251,7 @@ public class Home1 {
 
     public void clickOnGetPaid3(){
        By element = new By.ByXPath(getPaid),
-            expectedElement = new By.ByXPath(String.format(new SelectingDocument(driver).doc, "Exchange a Waiver"));
+            expectedElement = new By.ByXPath(String.format(new SelectingDocument_BasicImp(driver).doc, "Exchange a Waiver"));
         clickOnBtn(element,expectedElement);
     }
 

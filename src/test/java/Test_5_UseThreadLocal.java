@@ -1,5 +1,5 @@
-import Actions.BrowserActions5_UseThreadLocalOfDrivers;
-import POM.Home5;
+import Actions.BrowserActions4_UseThreadLocalOfDrivers;
+import POM.Home4_ActionsWithThreadLocal;
 import org.testng.annotations.*;
 
 /*
@@ -10,18 +10,18 @@ public class Test_5_UseThreadLocal {
         @BeforeMethod
         void setup(@Optional("firefox") String browser) throws Exception {
 
-            BrowserActions5_UseThreadLocalOfDrivers.setWebDriverToThreadLocalOfDrivers(BrowserActions5_UseThreadLocalOfDrivers.Browsers.valueOf(browser.toLowerCase()));
+            BrowserActions4_UseThreadLocalOfDrivers.setWebDriverToThreadLocalOfDrivers(BrowserActions4_UseThreadLocalOfDrivers.Browsers.valueOf(browser.toLowerCase()));
 
         }
 
         @AfterMethod
         void teardown() {
-            BrowserActions5_UseThreadLocalOfDrivers.closeDriver();
+            BrowserActions4_UseThreadLocalOfDrivers.closeDriver();
         }
 
         @Test
         void test1() {
-            Home5 home = new Home5();
+            Home4_ActionsWithThreadLocal home = new Home4_ActionsWithThreadLocal();
             home.navigateToHome();
 
         }

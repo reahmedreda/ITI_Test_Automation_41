@@ -3,7 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class BrowserActions3_StaticSingleDriver {
+public class BrowserActions2_StaticSingleDriver {
     public static WebDriver driver;
 
 
@@ -12,11 +12,11 @@ public class BrowserActions3_StaticSingleDriver {
     // Now we don't need to return anything, and each user of the driver can access it by calling BrowserActions3_StaticSingleDriver.driver
     public void initializeTheWebDriver(String browser) {
         try{
-            if(browser.toLowerCase().equals(BrowserActions3_StaticSingleDriver.Browsers.chrome.toString())) {
+            if(browser.toLowerCase().equals(BrowserActions2_StaticSingleDriver.Browsers.chrome.toString())) {
                 this.driver = new ChromeDriver();
 
             }
-            else if(browser.toLowerCase().equals( BrowserActions3_StaticSingleDriver.Browsers.firefox.toString())){
+            else if(browser.toLowerCase().equals( BrowserActions2_StaticSingleDriver.Browsers.firefox.toString())){
                 this.driver = new FirefoxDriver();
 
             }

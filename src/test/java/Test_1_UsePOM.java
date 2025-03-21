@@ -1,5 +1,5 @@
-import POM.Home1;
-import POM.SelectingDocument;
+import POM.Home_BasicImp;
+import POM.SelectingDocument_BasicImp;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -17,8 +17,8 @@ Resolving the problems caused in the previous 2 Classes by using POM
 public class Test_1_UsePOM {
 
     WebDriver driver;
-    Home1 home;
-    SelectingDocument selectDoc;
+    Home_BasicImp home;
+    SelectingDocument_BasicImp selectDoc;
     String browser = "Chrome";
 
     @BeforeMethod
@@ -34,8 +34,8 @@ public class Test_1_UsePOM {
         }
 
         driver.manage().window().maximize();
-        home = new Home1(driver);
-        selectDoc = new SelectingDocument(driver);
+        home = new Home_BasicImp(driver);
+        selectDoc = new SelectingDocument_BasicImp(driver);
     }
 
     @AfterMethod
@@ -48,23 +48,8 @@ public class Test_1_UsePOM {
     void testPreliminary() {
         home.navigateToHome();
         home.clickOnGetPaid();
-        Assert.assertEquals(selectDoc.getPrice("Release"),"$149");
-
-        //selectDoc.selectDocument(doc);
-
-      //  assertEquals(selectDoc.checkIfPriceIsFree(doc),true);
+        Assert.assertEquals(selectDoc.getPrice("Send a Warning"),"$59");
 
     }
-
-//    @Test
-//    void testLien() {
-//        //String doc = "20-Day Preliminary Notice";
-//        String doc= "Lien / Bond Claim";
-//        home.navigateToHome();
-//        home.pressCreateDocument2();
-//        selectDoc.selectDocument(doc);
-//        assertEquals(selectDoc.checkIfPriceIsFree(doc),true);
-//
-//    }
 
 }

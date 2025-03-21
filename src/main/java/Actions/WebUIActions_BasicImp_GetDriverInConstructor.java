@@ -13,9 +13,9 @@ import java.time.Duration;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
-public class WebUIActions1_BasicImp_GetDriverInConstructor {
+public class WebUIActions_BasicImp_GetDriverInConstructor {
     WebDriver driver;
-    public WebUIActions1_BasicImp_GetDriverInConstructor(WebDriver driver){
+    public WebUIActions_BasicImp_GetDriverInConstructor(WebDriver driver){
         this.driver= driver;
     }
 

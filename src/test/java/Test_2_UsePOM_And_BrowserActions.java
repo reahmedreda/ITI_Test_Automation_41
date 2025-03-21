@@ -1,5 +1,4 @@
 import Actions.BrowserActions1_BasicImp_returnDriver;
-import Actions.WebUIActions1_BasicImp_GetDriverInConstructor;
 import POM.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
@@ -13,20 +12,18 @@ test classes
 
 public class Test_2_UsePOM_And_BrowserActions {
     WebDriver driver;
-    Home2 home;
-    SelectingDocument2 selectDoc;
+    Home1_WithBasicActionsClass home;
+    SelectingDocument1_WithBasicActionsClass selectDoc;
     BrowserActions1_BasicImp_returnDriver BrowserActions;
-    WebUIActions1_BasicImp_GetDriverInConstructor actions;
 
     @BeforeMethod
     public void setup() {
         BrowserActions = new BrowserActions1_BasicImp_returnDriver();
         driver = BrowserActions.initializeTheWebDriver("Chrome");
         BrowserActions.maximizeScreen();
-        actions = new WebUIActions1_BasicImp_GetDriverInConstructor(driver);
 
-        home = new Home2(driver);
-        selectDoc = new SelectingDocument2(driver);
+        home = new Home1_WithBasicActionsClass(driver);
+        selectDoc = new SelectingDocument1_WithBasicActionsClass(driver);
     }
 
 

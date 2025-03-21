@@ -14,12 +14,12 @@ import java.time.Duration;
 import static org.testng.Assert.assertNotNull;
 
 
-public class WebUIActions5_UseThreadLocalOfDrivers {
+public class WebUIActions4_UseThreadLocalOfDrivers {
 
     public WebDriver driver;
 
-    public WebUIActions5_UseThreadLocalOfDrivers(){
-        this.driver= BrowserActions5_UseThreadLocalOfDrivers.drivers.get();
+    public WebUIActions4_UseThreadLocalOfDrivers(){
+        this.driver= BrowserActions4_UseThreadLocalOfDrivers.drivers.get();
     }
 
     public void clickOn(String selector,Locators l,boolean assertion,String expectedElementSelector,Locators l2) {
