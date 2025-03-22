@@ -10,23 +10,24 @@ of using multiple drivers, and it's stored in Array List, Which isn't the best
 data structure to use for this purpose, check the Browser Actions class for more information
  */
 public class Test_4_1_UseMultipleDrivers_ArrayList {
-    Home3_ActionsWithArrayListOrMap home;
-    int driverNo;
 
     @BeforeMethod
     void setup() {
-        driverNo= BrowserActions3_UseArraylistOrMapOfDrivers.addWebDriverToListOfDrivers("Chrome");
-    }
+        }
 
     @AfterMethod
     void teardown() {
-        BrowserActions3_UseArraylistOrMapOfDrivers.closeDriverAndRemoveFromList(driverNo);
+
     }
 
     @Test
     void test1() {
+        Home3_ActionsWithArrayListOrMap home;
+        int driverNo;
+        driverNo= BrowserActions3_UseArraylistOrMapOfDrivers.addWebDriverToListOfDrivers("Chrome");
         home = new Home3_ActionsWithArrayListOrMap(driverNo);
         home.navigateToHome();
+        BrowserActions3_UseArraylistOrMapOfDrivers.closeDriverAndRemoveFromList(driverNo);
     }
 
 

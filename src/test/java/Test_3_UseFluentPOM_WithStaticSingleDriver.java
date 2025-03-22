@@ -7,23 +7,21 @@ A Type of POM, called Fluent where each function return the instance "this"
 so this will help creating a chain of function calls for better readability
  */
 
-public class Test_3_UseFluentPOM {
+public class Test_3_UseFluentPOM_WithStaticSingleDriver {
     Home2_ActionsWithStaticDriver home;
 
-    BrowserActions2_StaticSingleDriver BrowserActions;
 
     @BeforeMethod
     public void setup() {
-        BrowserActions = new BrowserActions2_StaticSingleDriver();
-        BrowserActions.initializeTheWebDriver("Chrome");
-        BrowserActions.maximizeScreen();
+        BrowserActions2_StaticSingleDriver.initializeTheWebDriver("Chrome");
+        BrowserActions2_StaticSingleDriver.maximizeScreen();
         home = new Home2_ActionsWithStaticDriver();
 
     }
 
     @AfterMethod
     public void teardown() {
-        BrowserActions.quitDriver();
+        BrowserActions2_StaticSingleDriver.quitDriver();
     }
 
 

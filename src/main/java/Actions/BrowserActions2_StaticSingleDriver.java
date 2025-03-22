@@ -10,14 +10,14 @@ public class BrowserActions2_StaticSingleDriver {
     // Enhanced version from BrowserAction instead of returning everytime an instance of a webdriver and each
     // Test Class will have to pass it to each POM , this class created a static public webdriver to be seen by all classes
     // Now we don't need to return anything, and each user of the driver can access it by calling BrowserActions3_StaticSingleDriver.driver
-    public void initializeTheWebDriver(String browser) {
+    public static void initializeTheWebDriver(String browser) {
         try{
             if(browser.toLowerCase().equals(BrowserActions2_StaticSingleDriver.Browsers.chrome.toString())) {
-                this.driver = new ChromeDriver();
+                driver = new ChromeDriver();
 
             }
             else if(browser.toLowerCase().equals( BrowserActions2_StaticSingleDriver.Browsers.firefox.toString())){
-                this.driver = new FirefoxDriver();
+                driver = new FirefoxDriver();
 
             }
         }
@@ -28,15 +28,15 @@ public class BrowserActions2_StaticSingleDriver {
         }
     }
 
-    public void maximizeScreen(){
+    public static void maximizeScreen(){
         driver.manage().window().maximize();
     }
 
-    public void closeDriver(){
+    public static void closeDriver(){
         driver.close();
     }
 
-    public void quitDriver(){
+    public static void quitDriver(){
         driver.quit();
     }
 
